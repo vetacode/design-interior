@@ -304,29 +304,38 @@
       }
 
       .hero {
-        padding: 42px 0 76px;
+        min-height: 100vh;
+        padding: 0;
       }
 
       .hero-panel {
         position: relative;
         overflow: hidden;
-        display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-        gap: 36px;
-        padding: 38px;
+        min-height: calc(100vh - 79px);
+        display: flex;
+        align-items: flex-end;
+        padding: 48px;
         border: 1px solid var(--line);
-        border-radius: calc(var(--radius-lg) + 4px);
-        background:
-          linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.04),
-            rgba(255, 255, 255, 0.02)
-          ),
-          rgba(11, 15, 20, 0.82);
+        border-radius: 0 0 calc(var(--radius-lg) + 4px) calc(var(--radius-lg) + 4px);
+        background: linear-gradient(
+          180deg,
+          rgba(8, 10, 14, 0.72) 0%,
+          rgba(8, 10, 14, 0.66) 42%,
+          rgba(8, 10, 14, 0.9) 100%
+        );
         box-shadow: var(--shadow);
       }
 
       .hero-panel::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(209, 169, 95, 0.2), transparent 28%),
+          linear-gradient(90deg, rgba(6, 8, 12, 0.78) 0%, rgba(6, 8, 12, 0.36) 48%, rgba(6, 8, 12, 0.72) 100%);
+      }
+
+      .hero-panel::before {
         content: '';
         position: absolute;
         inset: auto -120px -120px auto;
@@ -346,7 +355,25 @@
         z-index: 1;
         display: grid;
         gap: 24px;
-        align-content: center;
+        align-content: end;
+        max-width: 720px;
+      }
+
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 24px 24px 0;
+        pointer-events: none;
+      }
+
+      .hero-media img {
+        width: min(100%, 1280px);
+        height: 100%;
+        object-fit: contain;
+        object-position: center right;
       }
 
       .hero-lead {
@@ -397,6 +424,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 16px;
+        max-width: 760px;
       }
 
       .stat-card {
@@ -414,39 +442,7 @@
         line-height: 1;
       }
 
-      .hero-visual {
-        display: grid;
-        gap: 16px;
-      }
-
-      .hero-gallery {
-        display: block;
-      }
-
-      .gallery-item {
-        overflow: hidden;
-        border-radius: var(--radius-md);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: var(--card-alt);
-        box-shadow: var(--shadow);
-      }
-
-      .gallery-item img {
-        aspect-ratio: 4 / 5;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .hero-note {
-        padding: 18px 20px;
-      }
-
-      .hero-note strong {
-        display: block;
-        margin-bottom: 6px;
-      }
-
-      .portfolio-grid,
+      .portfolio-carousel,
       .services-grid,
       .styles-grid,
       .steps-grid,
@@ -455,18 +451,36 @@
         gap: 20px;
       }
 
-      .portfolio-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .portfolio-carousel-wrap {
+        position: relative;
+      }
+
+      .portfolio-carousel {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 4px 4px 18px;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+      }
+
+      .portfolio-carousel::-webkit-scrollbar {
+        display: none;
       }
 
       .portfolio-card {
+        flex: 0 0 min(360px, 86vw);
         position: relative;
         overflow: hidden;
-        min-height: 320px;
+        min-height: 420px;
         border-radius: var(--radius-md);
         border: 1px solid var(--line);
         background: var(--card-alt);
         box-shadow: var(--shadow);
+        scroll-snap-align: start;
       }
 
       .portfolio-card img {
@@ -494,6 +508,12 @@
         margin: 0;
         color: var(--muted-strong);
         font-size: 0.95rem;
+      }
+
+      .portfolio-hint {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.94rem;
       }
 
       .services-grid {
@@ -734,12 +754,10 @@
 
       @media (max-width: 1080px) {
         .section-head.split,
-        .hero-panel,
         .cta-wrap {
           grid-template-columns: 1fr;
         }
 
-        .portfolio-grid,
         .styles-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -762,12 +780,30 @@
         }
 
         .hero {
-          padding-top: 28px;
+          min-height: auto;
         }
 
         .hero-panel {
-          padding: 24px;
+          min-height: calc(100vh - 73px);
+          padding: 28px 24px 24px;
           gap: 28px;
+          align-items: end;
+          border-radius: 0 0 28px 28px;
+        }
+
+        .hero-panel::after {
+          background:
+            linear-gradient(180deg, rgba(6, 8, 12, 0.18) 0%, rgba(6, 8, 12, 0.62) 52%, rgba(6, 8, 12, 0.95) 100%);
+        }
+
+        .hero-media {
+          padding: 18px 18px 0;
+          justify-content: center;
+        }
+
+        .hero-media img {
+          width: 100%;
+          object-position: center center;
         }
 
         .hero-stats,
@@ -776,7 +812,6 @@
           grid-template-columns: 1fr;
         }
 
-        .portfolio-grid,
         .styles-grid,
         .area-grid {
           grid-template-columns: 1fr;
@@ -802,8 +837,34 @@
           padding-right: 20px;
         }
 
-        .gallery-item img {
-          aspect-ratio: 4 / 4.8;
+        .hero-panel {
+          min-height: calc(100vh - 69px);
+          padding-top: 88px;
+        }
+
+        .hero-media {
+          padding: 14px 14px 0;
+        }
+
+        .hero-media img {
+          width: 100%;
+          height: 100%;
+          object-position: center center;
+        }
+
+        .hero-copy,
+        .hero-highlight,
+        .hero-stats {
+          display: none;
+        }
+
+        .display-title {
+          font-size: clamp(2.7rem, 12vw, 4rem);
+        }
+
+        .portfolio-card {
+          flex-basis: 84vw;
+          min-height: 360px;
         }
 
         .btn,
@@ -858,6 +919,13 @@
       <section class="hero" id="beranda">
         <div class="container">
           <div class="hero-panel">
+            <div class="hero-media" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                loading="eager"
+              />
+            </div>
             <div class="hero-content">
               <span class="eyebrow">Tapos · Depok · Cimanggis</span>
               <div class="hero-lead">
@@ -917,36 +985,10 @@
                   <div class="stat-value">7–14</div>
                   <strong>Hari untuk tahap desain awal</strong>
                   <span class="muted"
-                    >Timeline menyesuaikan ukuran proyek dan revisi.</span
+                  >Timeline menyesuaikan ukuran proyek dan revisi.</span
                   >
                 </article>
               </div>
-            </div>
-
-            <div class="hero-visual">
-              <div
-                class="hero-gallery"
-                aria-label="Galeri contoh desain interior"
-              >
-                <figure class="gallery-item">
-                  <img
-                    src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kitchen set 1.png"
-                    alt="Kitchen set modern dengan kombinasi warna hangat"
-                    loading="lazy"
-                  />
-                </figure>
-              </div>
-              <aside class="hero-note hero-meta-card">
-                <strong
-                  >Desain yang terasa premium, tanpa layout yang
-                  berantakan</strong
-                >
-                <span class="muted">
-                  Setiap section kami susun dengan ritme spacing yang konsisten,
-                  kartu yang seragam, dan visual yang lebih nyaman dibaca di
-                  desktop maupun mobile.
-                </span>
-              </aside>
             </div>
           </div>
         </div>
@@ -967,7 +1009,8 @@
             </p>
           </div>
 
-          <div class="portfolio-grid">
+          <div class="portfolio-carousel-wrap">
+            <div class="portfolio-carousel" aria-label="Carousel portofolio yang bisa di-swipe">
             <article class="portfolio-card">
               <img
                 src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kitchen set 1.png"
@@ -998,19 +1041,72 @@
             </article>
             <article class="portfolio-card">
               <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-101527_bedroom 2.jpeg"
-                alt="Portofolio desain kamar tidur modern"
+                src="https://dongkrakusaha.com/gambarbebas/1526720260205-034944_mini bar black white premium.png"
+                alt="Portofolio mini bar hitam putih premium"
                 loading="lazy"
               />
               <div class="portfolio-overlay">
-                <h3>Bedroom Modern</h3>
+                <h3>Mini Bar Black & White</h3>
                 <p>
-                  Nuansa hangat dengan penataan furnitur yang lebih bersih dan
-                  tenang.
+                  Komposisi warna tegas dengan tampilan modern yang terasa premium.
+                </p>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <img
+                src="https://dongkrakusaha.com/gambarbebas/1526720260205-101307_bedroom 1.jpeg"
+                alt="Portofolio bedroom design 1"
+                loading="lazy"
+              />
+              <div class="portfolio-overlay">
+                <h3>Bedroom Design 1</h3>
+                <p>
+                  Kamar tidur dengan tata letak yang lebih hangat, bersih, dan nyaman.
+                </p>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <img
+                src="https://dongkrakusaha.com/gambarbebas/1526720260205-101527_bedroom 2.jpeg"
+                alt="Portofolio bedroom design 2"
+                loading="lazy"
+              />
+              <div class="portfolio-overlay">
+                <h3>Bedroom Design 2</h3>
+                <p>
+                  Nuansa modern dengan penataan furnitur yang lebih rapi dan tenang.
+                </p>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <img
+                src="https://dongkrakusaha.com/gambarbebas/1526720260205-100920_bedroom front.jpeg"
+                alt="Portofolio bedroom front view"
+                loading="lazy"
+              />
+              <div class="portfolio-overlay">
+                <h3>Bedroom Front View</h3>
+                <p>
+                  Sudut pandang depan yang memperlihatkan komposisi ruang lebih utuh.
+                </p>
+              </div>
+            </article>
+            <article class="portfolio-card">
+              <img
+                src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_bedroom set.png"
+                alt="Portofolio bedroom set lengkap"
+                loading="lazy"
+              />
+              <div class="portfolio-overlay">
+                <h3>Bedroom Set Lengkap</h3>
+                <p>
+                  Solusi set kamar yang terasa menyatu dan efisien untuk penggunaan harian.
                 </p>
               </div>
             </article>
           </div>
+          </div>
+          <p class="portfolio-hint">Geser ke samping untuk melihat lebih banyak portofolio.</p>
         </div>
       </section>
 
