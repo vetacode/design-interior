@@ -174,6 +174,7 @@
       h3,
       h4 {
         margin: 0;
+        color: white !important;
       }
 
       .display-title,
@@ -316,7 +317,8 @@
         align-items: flex-end;
         padding: 48px;
         border: 1px solid var(--line);
-        border-radius: 0 0 calc(var(--radius-lg) + 4px) calc(var(--radius-lg) + 4px);
+        border-radius: 0 0 calc(var(--radius-lg) + 4px)
+          calc(var(--radius-lg) + 4px);
         background: linear-gradient(
           180deg,
           rgba(8, 10, 14, 0.72) 0%,
@@ -331,8 +333,17 @@
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(circle at top right, rgba(209, 169, 95, 0.2), transparent 28%),
-          linear-gradient(90deg, rgba(6, 8, 12, 0.78) 0%, rgba(6, 8, 12, 0.36) 48%, rgba(6, 8, 12, 0.72) 100%);
+          radial-gradient(
+            circle at top right,
+            rgba(209, 169, 95, 0.2),
+            transparent 28%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(6, 8, 12, 0.78) 0%,
+            rgba(6, 8, 12, 0.36) 48%,
+            rgba(6, 8, 12, 0.72) 100%
+          );
       }
 
       .hero-panel::before {
@@ -792,8 +803,12 @@
         }
 
         .hero-panel::after {
-          background:
-            linear-gradient(180deg, rgba(6, 8, 12, 0.18) 0%, rgba(6, 8, 12, 0.62) 52%, rgba(6, 8, 12, 0.95) 100%);
+          background: linear-gradient(
+            180deg,
+            rgba(6, 8, 12, 0.18) 0%,
+            rgba(6, 8, 12, 0.62) 52%,
+            rgba(6, 8, 12, 0.95) 100%
+          );
         }
 
         .hero-media {
@@ -985,7 +1000,7 @@
                   <div class="stat-value">7–14</div>
                   <strong>Hari untuk tahap desain awal</strong>
                   <span class="muted"
-                  >Timeline menyesuaikan ukuran proyek dan revisi.</span
+                    >Timeline menyesuaikan ukuran proyek dan revisi.</span
                   >
                 </article>
               </div>
@@ -1010,103 +1025,113 @@
           </div>
 
           <div class="portfolio-carousel-wrap">
-            <div class="portfolio-carousel" aria-label="Carousel portofolio yang bisa di-swipe">
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kitchen set 1.png"
-                alt="Portofolio kitchen set premium"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Kitchen Set Premium</h3>
-                <p>
-                  Finishing rapi, storage efisien, dan proporsi kabinet yang
-                  seimbang.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kisi kisi penyekat.png"
-                alt="Portofolio partisi kisi-kisi dekoratif"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Partisi Kisi-Kisi</h3>
-                <p>
-                  Pembatas ruang yang tetap ringan secara visual dan elegan
-                  dilihat.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-034944_mini bar black white premium.png"
-                alt="Portofolio mini bar hitam putih premium"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Mini Bar Black & White</h3>
-                <p>
-                  Komposisi warna tegas dengan tampilan modern yang terasa premium.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-101307_bedroom 1.jpeg"
-                alt="Portofolio bedroom design 1"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Bedroom Design 1</h3>
-                <p>
-                  Kamar tidur dengan tata letak yang lebih hangat, bersih, dan nyaman.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-101527_bedroom 2.jpeg"
-                alt="Portofolio bedroom design 2"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Bedroom Design 2</h3>
-                <p>
-                  Nuansa modern dengan penataan furnitur yang lebih rapi dan tenang.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-100920_bedroom front.jpeg"
-                alt="Portofolio bedroom front view"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Bedroom Front View</h3>
-                <p>
-                  Sudut pandang depan yang memperlihatkan komposisi ruang lebih utuh.
-                </p>
-              </div>
-            </article>
-            <article class="portfolio-card">
-              <img
-                src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_bedroom set.png"
-                alt="Portofolio bedroom set lengkap"
-                loading="lazy"
-              />
-              <div class="portfolio-overlay">
-                <h3>Bedroom Set Lengkap</h3>
-                <p>
-                  Solusi set kamar yang terasa menyatu dan efisien untuk penggunaan harian.
-                </p>
-              </div>
-            </article>
+            <div
+              class="portfolio-carousel"
+              aria-label="Carousel portofolio yang bisa di-swipe"
+            >
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kitchen set 1.png"
+                  alt="Portofolio kitchen set premium"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Kitchen Set Premium</h3>
+                  <p>
+                    Finishing rapi, storage efisien, dan proporsi kabinet yang
+                    seimbang.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_kisi kisi penyekat.png"
+                  alt="Portofolio partisi kisi-kisi dekoratif"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Partisi Kisi-Kisi</h3>
+                  <p>
+                    Pembatas ruang yang tetap ringan secara visual dan elegan
+                    dilihat.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-034944_mini bar black white premium.png"
+                  alt="Portofolio mini bar hitam putih premium"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Mini Bar Black & White</h3>
+                  <p>
+                    Komposisi warna tegas dengan tampilan modern yang terasa
+                    premium.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-101307_bedroom 1.jpeg"
+                  alt="Portofolio bedroom design 1"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Bedroom Design 1</h3>
+                  <p>
+                    Kamar tidur dengan tata letak yang lebih hangat, bersih, dan
+                    nyaman.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-101527_bedroom 2.jpeg"
+                  alt="Portofolio bedroom design 2"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Bedroom Design 2</h3>
+                  <p>
+                    Nuansa modern dengan penataan furnitur yang lebih rapi dan
+                    tenang.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-100920_bedroom front.jpeg"
+                  alt="Portofolio bedroom front view"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Bedroom Front View</h3>
+                  <p>
+                    Sudut pandang depan yang memperlihatkan komposisi ruang
+                    lebih utuh.
+                  </p>
+                </div>
+              </article>
+              <article class="portfolio-card">
+                <img
+                  src="https://dongkrakusaha.com/gambarbebas/1526720260205-031540_bedroom set.png"
+                  alt="Portofolio bedroom set lengkap"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Bedroom Set Lengkap</h3>
+                  <p>
+                    Solusi set kamar yang terasa menyatu dan efisien untuk
+                    penggunaan harian.
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
-          </div>
-          <p class="portfolio-hint">Geser ke samping untuk melihat lebih banyak portofolio.</p>
+          <p class="portfolio-hint">
+            Geser ke samping untuk melihat lebih banyak portofolio.
+          </p>
         </div>
       </section>
 
